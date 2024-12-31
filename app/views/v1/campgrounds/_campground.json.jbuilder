@@ -6,4 +6,4 @@ json.extract! campground,
 :price,
 :created_at,
 :updated_at
-json.url campground_url(campground, format: :json)
+json.url v1_campground_url(campground, format: :json)
