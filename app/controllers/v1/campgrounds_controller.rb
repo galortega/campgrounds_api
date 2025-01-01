@@ -19,7 +19,7 @@ module V1
       @campground = Campground.new(campground_params)
 
       if @campground.save
-        render :show, status: :created, location: v1_campground_url(@campground)
+        render :show, status: :created, location: [ :v1, @campground ]
       else
         render json: @campground.errors, status: :unprocessable_entity
       end
@@ -29,7 +29,7 @@ module V1
     # PATCH/PUT /campgrounds/1.json
     def update
       if @campground.update(campground_params)
-        render :show, status: :ok, location: v1_campground_url(@campground)
+        render :show, status: :ok, location: [ :v1, @campground ]
       else
         render json: @campground.errors, status: :unprocessable_entity
       end
