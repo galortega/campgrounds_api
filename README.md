@@ -30,8 +30,10 @@ This README documents the steps necessary to get the Campgrounds API application
 
 3. Create the database:
 
+   **Stop the local database server if it is running.**
+
    ```sh
-    docker-compose up
+    docker-compose up -d
     rails db:create
    ```
 
@@ -54,3 +56,5 @@ This README documents the steps necessary to get the Campgrounds API application
    ```
 
 7. Open your browser and navigate to `http://localhost:3000` to view the application.
+
+8. Browse the API documentation at `https://www.postman.com/blubear-dev-apis/campgrounds-api/documentation/zznbij1/v1?workspaceId=d779d5c2-517c-4bb4-9a6c-60cba2206e08`.
