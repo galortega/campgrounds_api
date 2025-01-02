@@ -21,7 +21,7 @@ module V1
       if @favorite.save
         render :show, status: :created, location: [ :v1, @favorite ]
       else
-        render json: @favorite.errors, status: :unprocessable_entity
+        render_invalid @favorite.errors
       end
     end
 
