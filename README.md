@@ -22,29 +22,35 @@ This README documents the steps necessary to get the Campgrounds API application
    cd campgrounds_api
    ```
 
-2. Create the database:
+2. Install the dependencies:
+
+   ```sh
+   bundle install
+   ```
+
+3. Create the database:
 
    ```sh
     docker-compose up
     rails db:create
    ```
 
-3. Run the migrations:
+4. Run the migrations:
 
    ```sh
    rails db:migrate
    ```
 
-4. Load the fixtures:
+5. Load the fixtures:
 
    ```sh
     rails db:fixtures:load
    ```
 
-5. Start the server:
+6. Start the server:
 
    ```sh
    rails s
    ```
 
-6. Open your browser and navigate to `http://localhost:3000` to view the application.
+7. Open your browser and navigate to `http://localhost:3000` to view the application.
