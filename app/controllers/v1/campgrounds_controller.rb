@@ -1,6 +1,7 @@
 module V1
   class CampgroundsController < APIController
     before_action :set_campground, only: %i[ show update destroy ]
+    before_action :require_authentication
 
     # GET /campgrounds
     # GET /campgrounds.json
