@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_02_003242) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_02_014118) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_02_003242) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "campground_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campground_id"], name: "index_favorites_on_campground_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -41,5 +50,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_02_003242) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "favorites", "campgrounds"
+  add_foreign_key "favorites", "users"
   add_foreign_key "sessions", "users"
 end
