@@ -4,8 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
+one:
+  name: First Campground
+  description: This is the first campground
+  location: 1234 First St
+  price: 10.00
 #
-two: {}
-# column: value
+two:
+  name: Second Campground
+  description: This is the second campground
+  location: 5678 Second St
+  price: 20.00
+
+three:
+  name: Third Campground
+  description: This is the third campground
+  location: 91011 Third St
+  price: 30.00
