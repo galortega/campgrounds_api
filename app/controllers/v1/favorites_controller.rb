@@ -1,7 +1,6 @@
 module V1
   class FavoritesController < ApplicationController
     before_action :set_favorite, only: %i[ show update destroy ]
-    before_action :require_authentication
 
     # GET /favorites
     # GET /favorites.json

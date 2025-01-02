@@ -1,6 +1,6 @@
 module V1
   class SessionsController < APIController
-    skip_before_action :require_authentication, only: [ :create ]
+    allow_unauthenticated_access only: %i[ create ]
 
     def new
     end
