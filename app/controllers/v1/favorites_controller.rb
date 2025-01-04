@@ -49,7 +49,7 @@ module V1
 
       # Only allow a list of trusted parameters through.
       def favorite_params
-        params.expect(favorite: [ :user_id, :campground_id ])
+        params.expect(favorite: [ :campground_id ])
       end
   end
 end
