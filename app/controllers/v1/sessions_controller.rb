@@ -1,6 +1,6 @@
 module V1
   class SessionsController < APIController
-    allow_unauthenticated_access only: %i[ create ]
+    allow_unauthenticated_access_only only: %i[ create ]
 
     def new
     end

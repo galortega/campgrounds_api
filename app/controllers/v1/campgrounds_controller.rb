@@ -6,12 +6,14 @@ module V1
     # GET /campgrounds
     # GET /campgrounds.json
     def index
-      @campgrounds = Campground.all
+      @campgrounds = Campground.search(params[:q])
+      Campground.mark_favorited(@campgrounds, Current.user) if Current.user
     end
 
     # GET /campgrounds/1
     # GET /campgrounds/1.json
     def show
+      Campground.mark_favorited(@campground, Current.user) if Current.user
     end
 
     # POST /campgrounds

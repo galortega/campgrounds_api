@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_05_152828) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_05_180547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_05_152828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.index ["description"], name: "index_campgrounds_on_description"
+    t.index ["location"], name: "index_campgrounds_on_location"
+    t.index ["name"], name: "index_campgrounds_on_name"
   end
 
   create_table "favorites", force: :cascade do |t|
