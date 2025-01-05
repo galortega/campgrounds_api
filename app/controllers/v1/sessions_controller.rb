@@ -5,6 +5,13 @@ module V1
     def new
     end
 
+    # POST /v1/sessions
+    # This action creates a new session for the user.
+    # Params:
+    # +email_address+:: the email address of the user
+    # +password+:: the password of the user
+    # Response:
+    # +token+:: the session token
     def create
       if user = User.authenticate_by(email_address: params[:email_address], password: params[:password])
         session = user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip)
@@ -14,6 +21,11 @@ module V1
       end
     end
 
+    # DELETE /v1/sessions
+    # This action destroys the current session.
+    # It uses the Current module to access the current session.
+    # Response:
+    # 204 No Content
     def destroy
       Current.session.destroy
       head :no_content
