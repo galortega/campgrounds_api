@@ -32,7 +32,7 @@ module Authentication
     end
 
     def refresh_session
-      if Current.session
+      if Current.session && !Current.session.destroyed?
         Current.session.regenerate_token!
         response.set_header("Authorization", "Bearer #{Current.session.token}")
       end
