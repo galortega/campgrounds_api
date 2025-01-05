@@ -6,9 +6,14 @@ module V1
     # GET /campgrounds
     # GET /campgrounds.json
     def index
-      @campgrounds = Campground.search(params[:query])
+      cache_key = generate_cache_key params[:query]
+      @campgrounds = Rails.cache.fetch(cache_key, expires_in: 1.hours) do
+        campgrounds = Campground.search(params[:query])
+        campgrounds
+      end
       Campground.mark_favorited(@campgrounds, Current.user) if Current.user
     end
+
 
     # GET /campgrounds/1
     # GET /campgrounds/1.json
@@ -53,6 +58,10 @@ module V1
       # Only allow a list of trusted parameters through.
       def campground_params
         params.require(:campground).permit(:name, :location, :description, :price)
+      end
+
+      def generate_cache_key(query)
+        "campgrounds:#{query}"
       end
   end
 end
