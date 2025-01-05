@@ -7,10 +7,12 @@ module Authentication
   end
 
   class_methods do
+    # Skip the authentication requirement for a specific action
     def allow_unauthenticated_access_only(**options)
       skip_before_action :require_authentication, **options
     end
 
+    # Skip the authentication requirement for a specific action and authenticate if possible
     def allow_unauthenticated_access(**options)
       before_action :authenticate_if_possible, **options
       skip_before_action :require_authentication, **options
@@ -31,6 +33,7 @@ module Authentication
       Current.session = Session.find_by(token: token)
     end
 
+    # Refresh the session token if the session is still active
     def refresh_session
       if Current.session && !Current.session.destroyed?
         Current.session.regenerate_token!

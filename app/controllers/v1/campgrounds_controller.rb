@@ -5,6 +5,11 @@ module V1
 
     # GET /campgrounds
     # GET /campgrounds.json
+    # This action fetches a list of campgrounds based on the query parameters provided.
+    # It uses caching to store the results for 1 hour to improve performance.
+    # If the user is authenticated, it marks the campgrounds as favorited for the current user.
+    # Params:
+    # +query+:: a string containing the search query for campgrounds
     def index
       cache_key = generate_cache_key params[:query]
       @campgrounds = Rails.cache.fetch(cache_key, expires_in: 1.hours) do
@@ -17,6 +22,11 @@ module V1
 
     # GET /campgrounds/1
     # GET /campgrounds/1.json
+    # This action fetches a single campground based on the ID provided.
+    # If the user is authenticated, it marks the campground as favorited for the current user.
+    # Params:
+    # +id+:: the ID of the campground to fetch
+    # +query+:: a string containing the search query for campgrounds
     def show
       Campground.mark_favorited(@campground, Current.user) if Current.user
     end

@@ -4,6 +4,8 @@ module V1
 
     # GET /favorites
     # GET /favorites.json
+    # This action fetches a list of favorites for the current user.
+    # It uses the Current module to access the current user.
     def index
       @favorites = Current.user.favorites.all
     end
@@ -15,6 +17,10 @@ module V1
 
     # POST /favorites
     # POST /favorites.json
+    # This action creates a new favorite for the current user.
+    # It uses the Current module to access the current user.
+    # Params:
+    # +campground_id+:: the ID of the campground to favorite
     def create
       @favorite = Current.user.favorites.new(favorite_params)
 
@@ -37,6 +43,10 @@ module V1
 
     # DELETE /favorites/1
     # DELETE /favorites/1.json
+    # This action deletes a favorite for the current user.
+    # It uses the Current module to access the current user.
+    # Params:
+    # +id+:: the ID of the favorite to delete
     def destroy
       @favorite.destroy!
     end
