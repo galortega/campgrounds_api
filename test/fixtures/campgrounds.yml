@@ -5,19 +5,22 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  name: First Campground
-  description: This is the first campground
-  location: 1234 First St
-  price: 10.00
+  name: Riverbend RV Park
+  description: Riverbend RV Park – a tranquil 25 acre RV Park offering year-round camping and 55 grassy Rv sites with full hookups 30/50 AMP.
+  location: Sanger, California
+  price: 30
+  image: https://www.roverpass.com/system/pictures/images/000/055/523/big/IMG_7225.jpg?1527738685
 #
 two:
-  name: Second Campground
-  description: This is the second campground
-  location: 5678 Second St
-  price: 20.00
+  name: Sequoia RV Park
+  description: Located in the beautiful foothill close to Sequoia National park and Kings Canyon National Park, quiet and close to the nature with 40 total RV sites, can accommodate RVs up to 50ft, large lot with lots of space between sites, 30/50 amp, pull thrus, full hookups, dump station, tent sites, WiFi, restrooms, showers, laundry, clubhouse, playground, picnic area, fire rings, RV storage, nature watching.
+  location: Dunlap, California
+  price: 30
+  image: https://www.roverpass.com/system/pictures/images/000/061/269/full/sequoia-rv-park-dunlop-ca-8.jpg?1593181120
 
 three:
-  name: Third Campground
-  description: This is the third campground
-  location: 91011 Third St
-  price: 30.00
+  name: Club Royal Oak RV Resort
+  description: Secure, quiet and serene Riverfront RV Resort with grassy sites and over 190 mature shade trees. Only 3 miles East of the 99 Fwy. Some sites over 8,000 square feet.36 riverfront sites with their own private beach.
+  location: Kingsburg, California
+  price: 30
+  image: https://www.roverpass.com/system/pictures/images/000/003/268/full/club-royal-oak-rv-resort-kingsburg-ca-0.jpg?1439986533
