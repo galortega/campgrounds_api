@@ -4,20 +4,23 @@ class Campground < ApplicationRecord
 
   attr_accessor :is_favorited
 
-  def self.search(pattern)
+  # Scope to search for campgrounds by name, location, or description
+  scope :search, ->(pattern) {
     if pattern.blank?
       all
     else
       where("name ILIKE ? OR location ILIKE ? OR description ILIKE ?", "%#{pattern}%", "%#{pattern}%", "%#{pattern}%")
     end
-  end
+  }
 
+  # Class method to mark campgrounds as favorited by the user
   def self.mark_favorited(campgrounds, user)
     Array(campgrounds).each do |campground|
       campground.is_favorited = campground.favorited_by?(user)
     end
   end
 
+  # Instance method to check if the campground is favorited by the user
   def favorited_by?(user)
     favorites.exists?(user: user)
   end
