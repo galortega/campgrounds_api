@@ -2,7 +2,7 @@ class Campground < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_by_users, through: :favorites, source: :user
 
-  attr_accessor :is_favorited
+  attr_accessor :is_favorited, :favorited_id
 
   # Scope to search for campgrounds by name, location, or description
   scope :search, ->(pattern) {
@@ -17,6 +17,9 @@ class Campground < ApplicationRecord
   def self.mark_favorited(campgrounds, user)
     Array(campgrounds).each do |campground|
       campground.is_favorited = campground.favorited_by?(user)
+      if campground.is_favorited
+        campground.favorited_id = campground.favorites.find_by(user: user)&.id
+      end
     end
   end
 
