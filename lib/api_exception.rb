@@ -49,7 +49,7 @@ module APIException
           end
 
           rescue_from exception_name do |exception|
-            render status: context[:status], json: { error_code: context[:error_code], message: context[:message], detail: (exception.message) }.compact
+            render status: context[:status], json: { error_code: context[:error_code], message: context[:message], error: (exception.message), data: nil }.compact
           end
         end
       end
