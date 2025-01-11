@@ -27,7 +27,8 @@ module V1
       if @favorite.save
         render :show, status: :created, location: [ :v1, @favorite ]
       else
-        render_invalid @favorite.errors
+        puts @favorite.errors.full_messages
+        raise Exceptions::ValidationError.new(@favorite.errors.full_messages.join(", "))
       end
     end
 
@@ -37,7 +38,7 @@ module V1
       if @favorite.update(favorite_params)
         render :show, status: :ok, location: [ :v1, @favorite ]
       else
-        render json: @favorite.errors, status: :unprocessable_entity
+        raise Exceptions::ValidationError.new(@favorite.errors.full_messages.join(", "))
       end
     end
 

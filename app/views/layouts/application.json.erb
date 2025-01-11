@@ -1,0 +1,8 @@
+{
+<% if @api_errors.present? %>
+  "errors": <%= raw JSON.dump @api_errors %>,
+<% else %>
+  "data": <%= yield %>,
+<% end %>
+  "message": <%= raw JSON.dump @message %>
+}

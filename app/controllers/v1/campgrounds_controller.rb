@@ -17,6 +17,7 @@ module V1
         campgrounds
       end
       Campground.mark_favorited(@campgrounds, Current.user) if Current.user
+      @message = "Campgrounds fetched successfully"
     end
 
 
@@ -29,6 +30,7 @@ module V1
     # +query+:: a string containing the search query for campgrounds
     def show
       Campground.mark_favorited(@campground, Current.user) if Current.user
+      @message = "Campground fetched successfully"
     end
 
     # POST /campgrounds
@@ -39,7 +41,7 @@ module V1
       if @campground.save
         render :show, status: :created, location: [ :v1, @campground ]
       else
-        render json: @campground.errors, status: :unprocessable_entity
+        raise Exceptions::ValidationError.new(@campground.errors.full_messages.join(", "))
       end
     end
 
@@ -49,7 +51,7 @@ module V1
       if @campground.update(campground_params)
         render :show, status: :ok, location: [ :v1, @campground ]
       else
-        render json: @campground.errors, status: :unprocessable_entity
+        raise Exceptions::ValidationError.new(@campground.errors.full_messages.join(", "))
       end
     end
 

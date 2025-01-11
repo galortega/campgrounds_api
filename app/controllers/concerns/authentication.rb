@@ -42,6 +42,6 @@ module Authentication
     end
 
     def render_unauthorized
-      render json: { error: "Unauthorized" }, status: :unauthorized
+      raise Exceptions::Unauthorized
     end
 end
