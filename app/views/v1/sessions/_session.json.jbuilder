@@ -1,0 +1,2 @@
+json.extract! session,
+:token

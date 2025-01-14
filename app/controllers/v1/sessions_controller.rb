@@ -14,8 +14,9 @@ module V1
     # +token+:: the session token
     def create
       if user = User.authenticate_by(email_address: params[:email_address], password: params[:password])
-        session = user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip)
-        render json: { token: session.token }, status: :created
+        @session = user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip)
+        @message = "User authenticated successfully"
+        render :show, status: :created, location: [ :v1, @session ]
       else
         raise Exceptions::InvalidCredentials
       end
